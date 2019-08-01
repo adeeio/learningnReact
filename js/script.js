@@ -1,3 +1,4 @@
+import { readdirSync } from "fs";
 
     var movies = [
         {   id: 1,
@@ -43,3 +44,18 @@
             );
 
 ReactDOM.render(element, document.getElementById('app'));
+
+
+var Movie = React.createClass({
+    propTypes: {
+        image: React.PropTypes.object.isRequired,
+    },
+    render: function() {
+        return (
+            React.createElement('div', {},
+            React.createElement('h2', {}, this.props.image.name),
+            React.createElement('img', {src: this.props.image.src})
+            )
+        )
+    },
+});
