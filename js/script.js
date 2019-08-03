@@ -44,9 +44,7 @@ var Movie = React.createClass({
     render: function () {
         return (
             React.createElement('ul', {},
-                React.createElement('li', { key: this.props.movie.id },
-                    React.createElement('h2', {}, this.props.movie.title),
-                )
+                React.createElement('li', { key: this.props.movie.id })
             )
         )
 
@@ -63,24 +61,25 @@ var MovieDescription = React.createClass({
 
 });
 var MovieImage = React.createClass({
-    image: {
-        desc: React.PropTypes.string.isRequired,
+    propTypes: {
+        image: React.PropTypes.object.isRequired,
     },
     render: function () {
         return React.createElement('img', {src: this.props.image.image})
     },
 
 });
-var MovieImage = React.createClass({
-    image: {
-        desc: React.PropTypes.string.isRequired,
+var MovieTitle = React.createClass({
+    propTypes: {
+        title: React.PropTypes.string.isRequired,
     },
     render: function () {
-        return React.createElement('img', {src: this.props.image.image})
+        return React.createElement('h2', {}, this.props.title)
     },
 
 });
 
 
-var element = React.createElement(Movie, { movie: movie[0]}, MovieImage, {image: movie[0]}); 
+var element = React.createElement(Movie, { movie: movie[0]}); 
+var element2 = React.createElement(MovieTitle, {title: movie[0]})
 ReactDOM.render(element, document.getElementById('app'));
