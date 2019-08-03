@@ -1,28 +1,32 @@
 
 
 
-var movies = [
-    {   id: 1,
+var movie = [
+    {
+        id: 1,
         title: 'Harry Potter',
         desc: 'film o czarodzieju',
         image: 'images/potter.jpg'
     },
-    {   id: 2,
+    {
+        id: 2,
         title: 'Matrix',
         desc: 'film o symulacji',
         image: 'images/matrix.jpg'
     },
-    {   id: 3,
+    {
+        id: 3,
         title: 'Snow piercer',
         desc: 'film o ukladzie zycia',
         image: 'images/snow.jpg'
     },
-    {   id: 4,
+    {
+        id: 4,
         title: 'Mortal Kombat',
         desc: 'film o ratowaniu swiata',
         image: 'images/mortal.jpg'
     },
-    {   
+    {
         id: 5,
         title: 'Pulp Fiction',
         desc: 'klasyk',
@@ -31,26 +35,52 @@ var movies = [
 ];
 
 
-// var movies = {
-//     id: 1,
-//     title: 'Harry Potter',
-//     desc: 'film o czarodzieju',
-//     image: 'images/potter.jpg'
-// };
+
 
 var Movie = React.createClass({
     propTypes: {
-        movies: React.PropTypes.object.isRequired,
+        movie: React.PropTypes.object.isRequired,
     },
     render: function () {
         return (
-            React.createElement('li', {key: movies.id},
-                React.createElement('img', {src: this.props.movies.image})
+            React.createElement('ul', {},
+                React.createElement('li', { key: this.props.movie.id },
+                    React.createElement('h2', {}, this.props.movie.title),
+                )
             )
         )
+
     },
 });
 
+var MovieDescription = React.createClass({
+    propTypes: {
+        desc: React.PropTypes.string.isRequired,
+    },
+    render: function () {
+        return React.createElement('p', {}, this.props.desc)
+    },
 
-var element = React.createElement(Movie, {key: movies.id, movies: movies});
+});
+var MovieImage = React.createClass({
+    image: {
+        desc: React.PropTypes.string.isRequired,
+    },
+    render: function () {
+        return React.createElement('img', {src: this.props.image.image})
+    },
+
+});
+var MovieImage = React.createClass({
+    image: {
+        desc: React.PropTypes.string.isRequired,
+    },
+    render: function () {
+        return React.createElement('img', {src: this.props.image.image})
+    },
+
+});
+
+
+var element = React.createElement(Movie, { movie: movie[0]}, MovieImage, {image: movie[0]}); 
 ReactDOM.render(element, document.getElementById('app'));
