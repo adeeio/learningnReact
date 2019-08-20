@@ -88,10 +88,10 @@ var MoviesList = React.createClass({
     },
     render: function () {
         return movie.map(function (movie) {
-            return React.createElement(movie, {movie: movie})
+            return React.createElement(Movie, {movie: movie})
         })
     },
 });
 
-var element = React.createElement('ul', {}, MovieList);
+var element = React.createElement(MoviesList, {moviesList: movie});
 ReactDOM.render(element, document.getElementById('app'));
