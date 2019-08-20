@@ -65,7 +65,7 @@ var MovieDescription = React.createClass({
 });
 var MovieImage = React.createClass({
     propTypes: {
-        image: React.PropTypes.object.isRequired,
+        image: React.PropTypes.string.isRequired,
     },
     render: function () {
         return React.createElement('img', { src: this.props.image })
@@ -88,7 +88,7 @@ var MoviesList = React.createClass({
     },
     render: function () {
         return (
-            React.createElement("ul", this.props.moviesList.map(function (movie) {
+            React.createElement("ul", {}, this.props.moviesList.map(function (movie) {
                 return React.createElement(Movie, { key: movie.id, movie: movie })
             }))
         )
